@@ -1,5 +1,5 @@
 require("./../configs/db.config");
-const StyleModel = require("./../models/Movie.model");
+const MovieModel = require("./../models/Movie.model");
 
 const movies = [
 
@@ -88,12 +88,15 @@ const movies = [
   // Add here the script that will be run to actually seed the database (feel free to refer to the previous lesson)
   
   // ... your code here
-  (async function insertTestStyles() {
-    // your code here :
-    // delete the style collection first,
-    await StyleModel.deleteMany();
-    // then insert all style objects declared above
-    const result = await StyleModel.insertMany(movies);
-    // print the count of inserted styles in the backend console
-    console.log(result.length + " styles inserted in database");
-  })();
+
+  async function seedMovies(){
+    try {
+      await MovieModel.deleteMany();
+      await MovieModel.insertMany(movies);
+      console.log("done");
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
+  seedMovies();

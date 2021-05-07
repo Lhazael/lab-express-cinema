@@ -18,3 +18,7 @@ const movieSchema = new Schema({
     description: String,
     showtimes: [String],
 });
+
+const MovieModel = mongoose.model("movies", movieSchema);
+
+module.exports = MovieModel;
