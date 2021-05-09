@@ -87,16 +87,11 @@ const movies = [
   
   // Add here the script that will be run to actually seed the database (feel free to refer to the previous lesson)
   
-  // ... your code here
 
-  async function seedMovies(){
-    try {
+  (async function seedMovies(){
       await MovieModel.deleteMany();
-      await MovieModel.insertMany(movies);
-      console.log("done");
-    } catch(err) {
-      console.log(err);
-    }
-  }
-
-  seedMovies();
+      // await MovieModel.insertMany(movies);
+      const result = await MovieModel.insertMany(movies);
+      console.log(result.length + "movies added to the database");
+    })
+ 
